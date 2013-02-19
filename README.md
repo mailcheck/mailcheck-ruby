@@ -35,4 +35,4 @@ TODO: Write usage instructions here
 ## Credits
 
 * [Mailcheck.js](https://github.com/Kicksend/mailcheck): the original idea
-* [This gist](https://gist.github.com/mmmaia/3715790), by mmmaia - an initial port to Ruby
+* [This gist](https://gist.github.com/mmmaia/3715790), by [mmmaia](https://github.com/mmmaia) - an initial port to Ruby
