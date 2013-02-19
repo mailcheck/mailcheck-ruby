@@ -22,7 +22,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+> require 'mailcheck'
+
+> mailcheck = Kicksend::Mailcheck.new
+> mailcheck.suggest("user@hotma.com")
+# => {
+#   :address =>"user",
+#   :domain  =>"hotmail.com",
+#   :full    =>"user@hotmail.com"
+# }
+```
 
 ## Contributing
 
