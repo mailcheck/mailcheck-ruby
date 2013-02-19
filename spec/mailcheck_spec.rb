@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Kicksend::Mailcheck do
+describe Mailcheck do
 
   before do
-    @mailcheck = Kicksend::Mailcheck.new
+    @mailcheck = Mailcheck.new
   end
 
   describe "#suggest" do

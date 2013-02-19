@@ -13,6 +13,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "mailcheck"
   gem.require_paths = ["lib"]
-  gem.version       = Kicksend::Mailcheck::VERSION
+  gem.version       = Mailcheck::VERSION
   gem.add_development_dependency 'rspec', '~> 2.12'
 end

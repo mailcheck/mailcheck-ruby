@@ -25,7 +25,7 @@ Or install it yourself as:
 ```ruby
 > require 'mailcheck'
 
-> mailcheck = Kicksend::Mailcheck.new
+> mailcheck = Mailcheck.new
 > mailcheck.suggest("user@hotma.com")
 # => {
 #   :address =>"user",
