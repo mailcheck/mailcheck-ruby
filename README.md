@@ -34,6 +34,20 @@ Or install it yourself as:
 # }
 ```
 
+Returns false if no suggestion:
+```ruby
+> mailcheck.suggest("user@hotmail.com")
+# => false
+```
+
+Pass in a custom list of domains and TLDs:
+```ruby
+mailcheck = Mailcheck.new(
+  :domains => ["gmail.com", "hotmail.com", "aol.com"],
+  :top_level_domains => ["com", "net", "org"]
+)
+```
+
 ## Contributing
 
 1. Fork it
