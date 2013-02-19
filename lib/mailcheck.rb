@@ -18,6 +18,8 @@ module Kicksend
     def suggest(email)
       email_parts = split_email(email.downcase)
 
+      return false if email_parts == false
+
       closest_domain = find_closest_domain(email_parts[:domain], @domains)
 
       if closest_domain

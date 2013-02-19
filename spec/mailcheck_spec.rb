@@ -19,6 +19,10 @@ describe Kicksend::Mailcheck do
       @mailcheck.suggest("user@hotmail.com").should be_false
     end
 
+    it "is false when an imcomplete email is provided" do
+      @mailcheck.suggest("contact").should be_false
+    end
+
   end
 
 end
