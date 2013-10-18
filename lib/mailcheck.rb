@@ -8,7 +8,7 @@ class Mailcheck
 
   TOP_LEVEL_DOMAINS = ['co.uk', 'com', 'net', 'org', 'info', 'edu', 'gov', 'mil']
 
-  def initialize(opts={})
+  def initialize(opts = {})
     @domains = opts[:domains] || DOMAINS
     @top_level_domains = opts[:top_level_domains] || TOP_LEVEL_DOMAINS
   end
@@ -16,7 +16,7 @@ class Mailcheck
   def suggest(email)
     email_parts = split_email(email.downcase)
 
-    return false if email_parts == false
+    return false unless email_parts
 
     closest_domain = find_closest_domain(email_parts[:domain], @domains)
 
@@ -43,22 +43,22 @@ class Mailcheck
 
   def find_closest_domain(domain, domains)
     min_dist = 99
+    closest_domain = nil
+    return nil if domains.nil? || domains.size == 0
 
-    for i in 0...domains.length do
-      if domain === domains[i]
-        return domain
-      end
-      dist = sift_3distance(domain, domains[i])
+    domains.each do |dmn|
+      return domain if domain == dmn
+      dist = sift_3distance(domain, dmn)
       if dist < min_dist
         min_dist = dist
-        closest_domain = domains[i]
+        closest_domain = dmn
       end
     end
 
     if min_dist <= THRESHOLD && closest_domain
       closest_domain
     else
-      false
+      nil
     end
   end
 
@@ -77,7 +77,7 @@ class Mailcheck
       else
         offset1 = 0
         offset2 = 0
-        for i in 0...max_offset do
+        max_offset.times do |i|
           if c + i < s1.length && s1[c + i] == s2[c]
             offset1 = i
             break
@@ -90,47 +90,23 @@ class Mailcheck
       end
       c += 1
     end
-    return (s1.length + s2.length) / 2 - lcs
+    (s1.length + s2.length) / 2.0 - lcs
   end
 
   def split_email(email)
-
     parts = email.split('@')
 
-    if parts.length < 2
-      return false
-    end
-
-    for i in 0...parts.length do
-      if parts[i] === ''
-        return false
-      end
-    end
+    return false if parts.length < 2 || parts.any?{ |p| p == '' }
 
     domain = parts.pop
     domain_parts = domain.split('.')
-    tld = ''
 
-    if domain_parts.length == 0
-      # The address does not have a top-level domain
-      return false
-    elsif domain_parts.length == 1
-      # The address has only a top-level domain (valid under RFC)
-      tld = domain_parts[0]
-    else
-      # The address has a domain and a top-level domain
-      for i in 1...domain_parts.length do
-        tld << "#{domain_parts[i]}."
-      end
-      if domain_parts.length >= 2
-        tld = tld[0, tld.length - 1]
-      end
-    end
+    return false if domain_parts.length == 0
 
     {
-      :top_level_domain => tld,
+      :top_level_domain => domain_parts[1..-1].join('.'),
       :domain => domain,
-      :address => parts.join('@')
+      :address => parts.first
     }
   end
 end
