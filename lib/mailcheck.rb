@@ -104,9 +104,9 @@ class Mailcheck
     return false if domain_parts.length == 0
 
     {
-      :top_level_domain => domain_parts.join('.'),
+      :top_level_domain => domain_parts[1..-1].join('.'),
       :domain => domain,
-      :address => parts.join('@')
+      :address => parts.first
     }
   end
 end
