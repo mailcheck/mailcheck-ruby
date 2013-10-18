@@ -1,20 +1,20 @@
-# v1.0.0
+### Oct 18, 2013 - v1.0.0
 
 * Fixes by Alexander Shapiotko
-** Fixed distance calculation.
-** Re-written some unoptimal code
-** Make code closer to style guide
+  * Fixed distance calculation.
+  * Re-written some unoptimal code
+  * Make code closer to style guide
 
 * Added examples to docs
 
-# v0.0.3
+### Feb 19, 2013 - v0.0.3
 
 * Actually fix homepage 
 
-# v0.0.2
+### Feb 19, 2013 - v0.0.2
 
 * Fix homepage
 
-# v0.0.1
+### Feb 19, 2013 - v0.0.1
 
 * Initial version
