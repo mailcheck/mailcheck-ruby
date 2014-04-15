@@ -1,6 +1,6 @@
-# Mailcheck
+# Mailcheck - Ruby
 
-A ruby translation of the [Kicksend mailcheck](https://github.com/Kicksend/mailcheck) javascript library which suggests a right domain when your users misspell it in an email address.
+The Ruby library that suggests a right domain when your users misspell it in an email address. See the original at https://github.com/mailcheck/mailcheck.
 
 When your user types in "user@hotnail.con", Mailcheck will suggest "user@hotmail.com".
 
@@ -58,5 +58,14 @@ mailcheck = Mailcheck.new(
 
 ## Credits
 
-* [Mailcheck.js](https://github.com/Kicksend/mailcheck): the original idea
 * [This gist](https://gist.github.com/mmmaia/3715790), by [mmmaia](https://github.com/mmmaia) - an initial port to Ruby
+
+Maintainers
+-------
+
+- [Scott Becker](https://github.com/sbecker), Author.
+
+License
+-------
+
+Licensed under the MIT License.
