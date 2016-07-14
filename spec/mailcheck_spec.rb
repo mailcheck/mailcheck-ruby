@@ -17,6 +17,14 @@ describe Mailcheck do
       suggestion[:full].should    == 'user@hotmail.com'
     end
 
+    it "returns suggestion when the tld is missing" do
+      suggestion = @mailcheck.suggest("user@unknown")
+
+      suggestion[:address].should == 'user'
+      suggestion[:domain].should  == 'unknown.com'
+      suggestion[:full].should    == 'user@unknown.com'
+    end
+
     it "is false when there's no suggestion" do
       @mailcheck.suggest("user@hotmail.com").should be_false
     end
