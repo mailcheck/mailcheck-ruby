@@ -31,7 +31,7 @@ class Mailcheck
       if email_parts[:domain] && closest_top_level_domain && closest_top_level_domain != email_parts[:top_level_domain]
         # The email address may have a mispelled top-level domain return a suggestion
         domain = email_parts[:domain]
-        closest_domain = domain[0, domain.rindex(email_parts[:top_level_domain])] + closest_top_level_domain
+        closest_domain = closest_domain_for(email_parts, domain, closest_top_level_domain)
         return { :address => email_parts[:address], :domain => closest_domain, :full => "#{email_parts[:address]}@#{closest_domain}" }
       end
     end
@@ -108,5 +108,15 @@ class Mailcheck
       :domain => domain,
       :address => parts.first
     }
+  end
+
+  private
+
+  def closest_domain_for(email_parts, domain, closest_top_level_domain)
+    if email_parts[:top_level_domain].empty?
+      "#{domain}.#{closest_top_level_domain}"
+    else
+      domain.sub(/#{email_parts[:top_level_domain]}$/, closest_top_level_domain)
+    end
   end
 end
