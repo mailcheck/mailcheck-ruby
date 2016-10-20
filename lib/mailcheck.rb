@@ -4,13 +4,14 @@ class Mailcheck
 
   THRESHOLD = 3
 
-  DOMAINS = ['yahoo.com', 'google.com', 'hotmail.com', 'gmail.com', 'me.com', 'aol.com', 'mac.com', 'live.com', 'comcast.net', 'googlemail.com', 'msn.com', 'hotmail.co.uk', 'yahoo.co.uk', 'facebook.com', 'verizon.net', 'sbcglobal.net', 'att.net', 'gmx.com', 'mail.com']
+  DOMAINS = ['yahoo.com', 'google.com', 'hotmail.com', 'gmail.com', 'me.com', 'aol.com', 'mac.com', 'live.com', 'comcast.net', 'googlemail.com', 'msn.com', 'hotmail.co.uk', 'yahoo.co.uk', 'facebook.com', 'verizon.net', 'sbcglobal.net', 'att.net', 'gmx.com', 'mail.com', 'ymail.com']
 
   TOP_LEVEL_DOMAINS = ['co.uk', 'com', 'net', 'org', 'info', 'edu', 'gov', 'mil']
 
   def initialize(opts = {})
     @domains = opts[:domains] || DOMAINS
     @top_level_domains = opts[:top_level_domains] || TOP_LEVEL_DOMAINS
+    @threshold = opts[:threshold] || THRESHOLD
   end
 
   def suggest(email)
@@ -55,7 +56,7 @@ class Mailcheck
       end
     end
 
-    if min_dist <= THRESHOLD && closest_domain
+    if min_dist <= @threshold && closest_domain
       closest_domain
     else
       nil
